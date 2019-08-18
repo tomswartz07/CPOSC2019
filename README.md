@@ -1,9 +1,11 @@
-# CPOSC 2019: Designing and Building Open Source Circuit Boards
+# CPOSC 2019: Open Circuit: PCBs and Free Software
 
 ## About
 
 This repository contains the information and details related to
-the CPOSC 2019 talk: **Open Circuits: Printed Circuit Boards and Free Software**
+the CPOSC 2019 talk:
+
+**Open Circuit: Printed Circuit Boards and Free Software**
 
 This talk will provide a crash-course in open-source printed circuit design,
 giving an overview of the entire process, from ideas in your brain to production.
@@ -38,7 +40,8 @@ knowing that it's not as difficult or scary as it may seem.
 
 Assuming you have `pdflatex` installed, or TeXLive 2019-
 simply run the following command:
-```
+
+```sh
 cd presentation
 pdflatex cposc2019.tex
 ```
