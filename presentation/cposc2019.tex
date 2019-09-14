@@ -48,7 +48,7 @@
         \begin{column}[T]{5cm}
            {\huge Tom Swartz}
             \begin{itemize}%[<+->]
-                \item{Hobbist hardware hacker}
+                \item{Hobbyist hardware hacker}
                 \item{Make PCBs for various personal projects}
             \end{itemize}
         \end{column}
@@ -56,6 +56,10 @@
             \includegraphics[height=6cm]{images/me.jpg}
         \end{column}
     \end{columns}
+\end{frame}
+% Obligatory memes
+\begin{frame}[plain]
+    \includegraphics[width=0.85\paperwidth,keepaspectratio]{images/i_think_neat.png}
 \end{frame}
 
 % What's ahead?
@@ -74,6 +78,31 @@
         \item Intro to KiCAD
     \end{itemize}
 \end{frame}
+
+\begin{frame}
+    \frametitle{But Why?}
+    \framesubtitle{What does a PCB give my project?}
+    \begin{itemize}[<+->]
+        \item{Allows for (comparatively) smaller project footprints}
+        \item{Allows for sensitive signals to maintain integrity}
+        \item{Allows for easy duplication}
+        \item{Allows far superior current carrying capacity}
+        \item{Ensures product longevity}
+        \item{Makes a project `finished'}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Terminology}
+    \begin{description}
+        \item[PCB]{Printed Circuit Boards}
+        \item[EDA]{Electronic Design Automation, a collection of tools to design
+            and analyse semiconductors and printed circuit boards}
+        \item[Gerber Files]{(Sometimes \emph{.gbr}) ASCII vector files indicating the method
+            to construct a printed circuit board}
+    \end{description}
+\end{frame}
+
 \subsection[KiCAD]{Introduction to KiCAD}
 \begin{frame}
     \frametitle{\insertsection{} Outline}
@@ -83,6 +112,37 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}
+    \frametitle{KiCAD}
+    \includegraphics[width=0.85\paperwidth,keepaspectratio]{images/KiCad_Pcbnew_OpenGL.png}
+\end{frame}
+
+\begin{frame}
+    \frametitle{KiCAD}
+    \framesubtitle{About the program}
+    \begin{itemize}
+        \item{Free, Open Source EDA program}
+        \item{27 years of continuous development}
+        \item{Used by CERN}
+        \item{Single suite to create PCBs from start to finish}
+        \item{Nearly all project files can be stored in version control}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{KiCAD}
+    \framesubtitle{About the program}
+    The KiCAD suite has five main parts:
+    \begin{description}
+        \item[KiCad]{The project manager}
+        \item[Eeschema]{The schematic capture editor}
+        \item[Pcbnew]{The PCB layout program. It also has a 3D view}
+        \item[GerbView]{The Gerber viewer}
+        \item[Bmp2Comp]{Tool to convert images to footprints for PCB artwork}
+    \end{description}
+\end{frame}
+
+
 \section[Design]{Designing a Schematic}
 \begin{frame}
     \frametitle{\insertsection{} Outline}
@@ -90,8 +150,26 @@
         \item Start small
         \item Test prototype
         \item Get datasheets
-        \item KiCAD drawings
     \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Designing a schematic}
+    \begin{columns}[T]
+        \begin{column}[T]{5cm}
+            \begin{itemize}%[<+->]
+                \item{Difficulty of this step varies, but is
+                    typically the easiest}
+                \item{Take existing circuit, or manufacturer
+                    datasheets}
+                \item{Place parts}
+                \item{Hook up the dots}
+            \end{itemize}
+        \end{column}
+        \begin{column}[T]{5cm}
+            \includegraphics[height=7cm]{images/eeschema.png}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \section[Layout]{Creating a PCB Layout}
@@ -126,6 +204,38 @@
         \item Populating the boards
         \item Profit
     \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Post-Production}
+    \framesubtitle{JLCPCB Manufacturing Process}
+    \begin{center}
+        \textbf{Order Placed to Out the Door:}\\19 Hours, 5 Minutes, 5 Seconds
+        \includegraphics[height=0.70\paperheight,keepaspectratio]{images/fab_timeline.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Post-Production}
+    \framesubtitle{Receiving the PCBs}
+    \begin{center}
+        \includegraphics[height=0.70\paperheight,keepaspectratio]{images/packaging.jpg}
+    \end{center}
+\end{frame}
+\begin{frame}
+    \frametitle{Testing the boards}
+    Important to test for missed design issues
+
+    Use a multimeter to buzz it out
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Post-Production}
+    \framesubtitle{Receiving the PCBs}
+    \begin{center}
+        \includegraphics[height=0.70\paperheight,keepaspectratio]{images/complete.jpg}
+    \end{center}
 \end{frame}
 
 \end{document}
