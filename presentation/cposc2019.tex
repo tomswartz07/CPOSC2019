@@ -49,6 +49,7 @@
            {\huge Tom Swartz}
             \begin{itemize}%[<+->]
                 \item{Hobbyist hardware hacker}
+                \item{Amateur and Software-Defined Radio enthusiast}
                 \item{Make PCBs for various personal projects}
             \end{itemize}
         \end{column}
@@ -56,10 +57,6 @@
             \includegraphics[height=6cm]{images/me.jpg}
         \end{column}
     \end{columns}
-\end{frame}
-% Obligatory memes
-\begin{frame}[plain]
-    \includegraphics[width=0.85\paperwidth,keepaspectratio]{images/i_think_neat.png}
 \end{frame}
 
 % What's ahead?
@@ -71,47 +68,49 @@
 \section[Background]{Background}
 \subsection[But Why?]{Why make your own circuit boards?}
 \begin{frame}
-    \frametitle{\insertsection{} Outline}
-    \begin{itemize}
-        \item For finishing projects
-        \item Project evolution- Perfboard $\rightarrow{}$ PCB
-        \item Intro to KiCAD
-    \end{itemize}
-\end{frame}
-
-\begin{frame}
     \frametitle{But Why?}
     \framesubtitle{What does a PCB give my project?}
-    \begin{itemize}[<+->]
-        \item{Allows for (comparatively) smaller project footprints}
-        \item{Allows for sensitive signals to maintain integrity}
-        \item{Allows for easy duplication}
-        \item{Allows far superior current carrying capacity}
-        \item{Ensures product longevity}
-        \item{Makes a project `finished'}
-    \end{itemize}
+    \begin{columns}[T]
+        \begin{column}[T]{5cm}
+            \begin{itemize}[<+->]
+                \item{Allows for (comparatively) smaller project footprints}
+                \item{Allows for sensitive signals to maintain integrity}
+                \item{Allows for easy duplication}
+                \item{Allows far superior current carrying capacity}
+                \item{Ensures product longevity}
+                \item{Makes a project `finished'}
+            \end{itemize}
+        \end{column}
+        \begin{column}[T]{5cm}
+            \includegraphics[width=0.40\paperwidth,keepaspectratio]{images/breadboard.jpg}
+            \includegraphics[width=0.40\paperwidth,keepaspectratio]{images/veroboard.jpg}
+        \end{column}
+    \end{columns}
+\end{frame}
+% Obligatory memes
+\begin{frame}[plain]
+    \includegraphics[width=0.85\paperwidth,keepaspectratio]{images/i_think_neat.png}
+\end{frame}
+
+\begin{frame}[plain]
+    \includegraphics[width=0.85\paperwidth,keepaspectratio]{images/board-to-board.png}
 \end{frame}
 
 \begin{frame}
     \frametitle{Terminology}
     \begin{description}
         \item[PCB]{Printed Circuit Boards}
+        \item[Datasheet]{A document containing all of the information for a
+            specific semiconductor device.}
         \item[EDA]{Electronic Design Automation, a collection of tools to design
             and analyse semiconductors and printed circuit boards}
-        \item[Gerber Files]{(Sometimes \emph{.gbr}) ASCII vector files indicating the method
-            to construct a printed circuit board}
+        \item[Rat's Nest]{Unordered group of components to be organized in an EDA}
+        \item[Gerber Files]{(Sometimes \emph{.gbr}) ASCII vector files
+            indicating the method to construct a printed circuit board}
     \end{description}
 \end{frame}
 
 \subsection[KiCAD]{Introduction to KiCAD}
-\begin{frame}
-    \frametitle{\insertsection{} Outline}
-    \begin{itemize}
-        \item Intro to KiCAD
-        \item Overview of EDA programs
-    \end{itemize}
-\end{frame}
-
 \begin{frame}
     \frametitle{KiCAD}
     \includegraphics[width=0.85\paperwidth,keepaspectratio]{images/KiCad_Pcbnew_OpenGL.png}
@@ -122,9 +121,9 @@
     \framesubtitle{About the program}
     \begin{itemize}
         \item{Free, Open Source EDA program}
+        \item{Single suite to create PCBs from start to finish}
         \item{27 years of continuous development}
         \item{Used by CERN}
-        \item{Single suite to create PCBs from start to finish}
         \item{Nearly all project files can be stored in version control}
     \end{itemize}
 \end{frame}
@@ -136,7 +135,7 @@
     \begin{description}
         \item[KiCad]{The project manager}
         \item[Eeschema]{The schematic capture editor}
-        \item[Pcbnew]{The PCB layout program. It also has a 3D view}
+        \item[Pcbnew]{The PCB layout program. It also has a 3D viewer}
         \item[GerbView]{The Gerber viewer}
         \item[Bmp2Comp]{Tool to convert images to footprints for PCB artwork}
     \end{description}
@@ -145,76 +144,121 @@
 
 \section[Design]{Designing a Schematic}
 \begin{frame}
-    \frametitle{\insertsection{} Outline}
-    \begin{itemize}
-        \item Start small
-        \item Test prototype
-        \item Get datasheets
-    \end{itemize}
+    \frametitle{A Practical Example}
+    {\huge What better way to observe the process than to see an example?}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Designing a schematic}
+    \frametitle{A Practical Example}
+    \framesubtitle{Talk through a simple example}
+    \includegraphics[width=0.75\paperwidth]{images/RBP140Info.png}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Requirements}
     \begin{columns}[T]
         \begin{column}[T]{5cm}
-            \begin{itemize}%[<+->]
-                \item{Difficulty of this step varies, but is
-                    typically the easiest}
-                \item{Take existing circuit, or manufacturer
-                    datasheets}
-                \item{Place parts}
-                \item{Hook up the dots}
+            {\large Using RBP-140+}
+            \begin{itemize}
+                \item{Needed to handle small parts}
+                \item{Needed to reliably maintain connections}
+                \item{Needed a bunch of them (multiple receivers)}
+                \item{Did not want to spend a lot of money}
             \end{itemize}
         \end{column}
         \begin{column}[T]{5cm}
-            \includegraphics[height=7cm]{images/eeschema.png}
+            Eval Boards are expensive:\\
+            \includegraphics[keepaspectratio,scale=0.75]{images/eval_board.png}
+            But they offer free samples:\\
+            \includegraphics[keepaspectratio,scale=0.25]{images/ezsample.png}\\
         \end{column}
     \end{columns}
 \end{frame}
 
+\begin{frame}[plain]
+    \begin{center}
+        \includegraphics[keepaspectratio,scale=0.5]{images/make_my_own.jpg}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Datasheets}
+    \framesubtitle{Cruise control for cool}
+    \begin{center}
+        \includegraphics[keepaspectratio,scale=0.25]{images/datasheet_soldermask.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Datasheets}
+    \framesubtitle{Cruise control for cool}
+    \begin{center}
+        \includegraphics[keepaspectratio,scale=0.25]{images/datasheet_complex.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Datasheets}
+    \framesubtitle{Cruise control for cool}
+    \begin{center}
+        \includegraphics[keepaspectratio,scale=0.25]{images/datasheet_schematic.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Designing a schematic}
+    \begin{itemize}%[<+->]
+        \item{Difficulty of this step varies, but is
+            typically the easiest}
+        \item{Take existing circuit, or manufacturer
+            datasheets}
+        \item{Place parts}
+        \item{Hook up the dots}
+    \end{itemize}
+    \includegraphics[keepaspectratio,width=0.75\paperwidth]{images/eeschema.png}
+\end{frame}
+
+
 \section[Layout]{Creating a PCB Layout}
 \begin{frame}
-    \frametitle{\insertsection{} Outline}
-    \begin{itemize}
-        \item Lay out the rats nest
-        \item Find the matching parts
-        \item Place parts
-        \item Zones- ground planes, power rails, etc
-    \end{itemize}
+    \frametitle{Rats Nest}
+    \framesubtitle{Untangle the lines}
+    \begin{center}
+        \includegraphics[keepaspectratio,height=0.75\paperheight]{images/ratsnest.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{PCB Layout}
+    \framesubtitle{Photoshop, but for nerds}
+    \begin{center}
+        \includegraphics[keepaspectratio,width=0.75\paperwidth]{images/pcbnew.png}
+    \end{center}
 \end{frame}
 
 \section[Fabrication]{Preparing for Factory Fabrication}
 \begin{frame}
-    \frametitle{\insertsection{} Outline}
+    \frametitle{Factory Fabrication}
+    \framesubtitle{House Rules}
     \begin{itemize}
-        \item Each PCB Fab house is different, but general rules apply
-        \item Gerber Files
-        \item General limits and tolerances
-        \item Exporting files, loading them to Fab house
+        \item{Every fabrication house has their own limits}
+        \item{Limits are physical restrictions on manufactured parts}
+        \item{KiCAD allows for these restrictions to be defined, so you don't violate them while creating the PCB\footnote}
+        \item{Design Rules Check}
     \end{itemize}
-\end{frame}
-
-\section[Post-Production]{Post-Production}
-\begin{frame}
-    \frametitle{\insertsection{} Outline}
-    \begin{itemize}
-        \item General info on how quick process is
-        \item Receiving the boards
-        \item Testing boards for defects, issues from design
-        \item Populating the boards
-        \item Profit
-    \end{itemize}
+    \footnotetext[1] {\href{https://support.jlcpcb.com/article/44-how-to-export-kicad-pcb-to-gerber-files}{JLCPCB KiCAD}}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Post-Production}
+    \frametitle{Factory Fabrication}
     \framesubtitle{JLCPCB Manufacturing Process}
     \begin{center}
-        \textbf{Order Placed to Out the Door:}\\19 Hours, 5 Minutes, 5 Seconds
-        \includegraphics[height=0.70\paperheight,keepaspectratio]{images/fab_timeline.png}
+        \textbf{Order Placed to Out the Door:}\\24 Hours, 53 Minutes, 38 Seconds
+        \includegraphics[height=0.65\paperheight,keepaspectratio]{images/fab_timeline.png}
     \end{center}
 \end{frame}
 
+\section[Post-Production]{Post-Production}
 \begin{frame}
     \frametitle{Post-Production}
     \framesubtitle{Receiving the PCBs}
@@ -222,13 +266,6 @@
         \includegraphics[height=0.70\paperheight,keepaspectratio]{images/packaging.jpg}
     \end{center}
 \end{frame}
-\begin{frame}
-    \frametitle{Testing the boards}
-    Important to test for missed design issues
-
-    Use a multimeter to buzz it out
-\end{frame}
-
 
 \begin{frame}
     \frametitle{Post-Production}
