@@ -35,6 +35,7 @@ knowing that it's not as difficult or scary as it may seem.
 ## Files in this Repository:
 
 - `presentation/cposc2019.tex`: LaTeX Beamer presentation files
+- `rbp140-kicad/`: Directory containing referenced KiCAD project files.
 
 ## Making the presentation
 
@@ -47,3 +48,9 @@ pdflatex cposc2019.tex
 ```
 
 The PDF document will be generated and viewable for you.
+
+## Loading the KiCAD project
+
+Assuming you have KiCAD installed, simply
+navigate to `File` -> `Open Existing Project...` and select the project
+directory.
